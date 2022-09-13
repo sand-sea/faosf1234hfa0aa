@@ -15,7 +15,8 @@ from datetime import datetime, timedelta
 import requests
 
 # avoid ssl error
-requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS = 'ALL:@SECLEVEL=1'
+# requests.packages.urllib3.util.ssl_1.DEFAU1LT_CIPHERS = 'ALL:@SECLEVEL=1'
+requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS = "TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-128-GCM-SHA256:TLS13-AES-256-GCM-SHA384:ECDHE:!COMPLEMENTOFDEFAULT"
 
 usr_input_code = ""
 list_prize_level = []
