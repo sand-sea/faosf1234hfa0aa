@@ -1,4 +1,4 @@
-name: 签到
+name: 获取v2ray服务器列表
 
 on: 
     schedule:
