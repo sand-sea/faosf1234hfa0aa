@@ -111,9 +111,27 @@ def send_server_link_list_to_email(servers):
     smtp_obj.quit()
     pass
 
+	
+def init_email_config():
+    global email_config_smtp_server_domain
+    email_config_smtp_server_domain = os.environ['EMAIL_SMTP_DOMAIN']
+    global email_config_smtp_server_port
+    email_config_smtp_server_port = os.environ['EMAIL_SMTP_PORT']
+    global email_config_pop3_server_domain
+    # email_config_pop3_server_domain = os.environ['EMAIL_POP3_DOMAIN']
+    # global email_config_pop3_server_port
+    # email_config_pop3_server_port = os.environ['EMAIL_POP3_PORT']
+    global email_config_server_user_name
+    email_config_server_user_name = os.environ['EMAIL_SMTP_USER_NAME']
+    global email_config_server_user_pwd
+    email_config_server_user_pwd = os.environ['EMAIL_SMTP_USER_PWD']
+    global email_config_server_recv_user_email_addr
+    email_config_server_recv_user_email_addr = os.environ['EMAIL_SMTP_REV']
+    pass
 
 
 if __name__ == "__main__":
+    init_email_config()
     request_cookies = login_remote_server()
     server_link_list = get_remote_server_proxy_list(request_cookies)
     send_server_link_list_to_email(server_link_list)
