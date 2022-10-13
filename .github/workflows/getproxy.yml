@@ -3,8 +3,7 @@ name: 获取v2ray服务器列表
 on: 
     push:
     schedule:
-    - cron: '30 22 * * *'
-    - cron: '45 0 * * *'
+    - cron: '30 21 * * *'
     #- cron: '25 7 * * *'
 
 jobs:
