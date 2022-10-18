@@ -23,6 +23,7 @@ email_config_smtp_server_port = ''
 email_config_server_user_name = ''
 email_config_server_user_pwd = ''
 email_config_server_recv_user_email_addr = ''
+email_config_black_hole_addr = ''
 
 
 def login_remote_server():
@@ -100,14 +101,14 @@ def send_server_link_list_to_email(servers):
     report_string = '\r\n'.join(servers)
     msg = MIMEText(report_string, 'plain', 'UTF-8')
     msg['From'] = formataddr((Header("get_proxy_list", "UTF-8").encode(), "get_proxy_list@qq.com"))
-    msg['To'] = f"{email_config_server_user_name}"
+    msg['To'] = f"{email_config_black_hole_addr}"
     email_subject = "get_proxy_list_github_action"
     msg['Subject'] = Header(email_subject, 'UTF-8').encode()
     smtp_obj = smtplib.SMTP_SSL(email_config_smtp_server_domain, int(email_config_smtp_server_port))
     # if need print debug message to track bugs, open it
     smtp_obj.set_debuglevel(1)
     smtp_obj.login(user=email_config_server_user_name, password=email_config_server_user_pwd)
-    smtp_obj.sendmail(email_config_server_user_name, email_config_server_user_name, msg.as_string())
+    smtp_obj.sendmail(email_config_server_user_name, email_config_black_hole_addr, msg.as_string())
     smtp_obj.quit()
     pass
 
@@ -127,6 +128,9 @@ def init_email_config():
     email_config_server_user_pwd = os.environ['EMAIL_SMTP_USER_PWD']
     global email_config_server_recv_user_email_addr
     email_config_server_recv_user_email_addr = os.environ['EMAIL_SMTP_REV']
+    global email_config_black_hole_addr
+    email_config_black_hole_addr = os.environ['EMAIL_BLACK_HOLE_ADDR']
+    
     pass
 
 
