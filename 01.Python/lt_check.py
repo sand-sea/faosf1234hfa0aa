@@ -125,7 +125,8 @@ def get_lottery_info_from_office(end_period_num):
         office_release_origin_code = lt_list[lt_index]["kjhm"]
         # print(f"office release code:{office_release_origin_code}")
         success_msg = success_msg + f"office release code:{office_release_origin_code}<br>"
-        print(f"office release code:发售日期:{lt_list[lt_index]['saleDate']} 期号:{lt_list[lt_index]['drawid']} 发布:{lt_list[lt_index]['kjhm']}")
+        print(
+            f"office release code:发售日期:{lt_list[lt_index]['saleDate']} 期号:{lt_list[lt_index]['drawid']} 发布:{lt_list[lt_index]['kjhm']}")
         lt_index = lt_index + 1
     write_exec_result_to_file(success_msg)
     if (end_period_num - 2) <= current_period_num < (end_period_num + 2):
@@ -150,18 +151,21 @@ def write_message_header():
 
 
 def write_message_tailer():
-    r = requests.get("https://ip.gs/json")
-    json_str = json.loads(r.text)
-    # print(json_str)
-    print(f"IP:{json_str['ip']} City:{json_str.get('city', None)} TimeZone:{json_str['time_zone']}")
-    tp_str = f"<br><br><br>===================================" \
-             f"<br>IP:{json_str['ip']}<br>Country:{json_str['country']}<br>" \
-             f"Region:{json_str.get('region_name', None)}" \
-             f"<br>City:{json_str.get('city', None)}<br>Latitude:{json_str.get('latitude', None)}\t" \
-             f"longitude:{json_str.get('longitude', None)}" \
-             f"<br>TimeZone:{json_str['time_zone']}<br>asnOrg:{json_str.get('asn_org', None)}" \
-             f"<br>===================================<br>"
-    write_exec_result_to_file(tp_str)
+    try:
+        r = requests.get("https://ip.gs/json")
+        json_str = json.loads(r.text)
+        # print(json_str)
+        print(f"IP:{json_str['ip']} City:{json_str.get('city', None)} TimeZone:{json_str['time_zone']}")
+        tp_str = f"<br><br><br>===================================" \
+                 f"<br>IP:{json_str['ip']}<br>Country:{json_str['country']}<br>" \
+                 f"Region:{json_str.get('region_name', None)}" \
+                 f"<br>City:{json_str.get('city', None)}<br>Latitude:{json_str.get('latitude', None)}\t" \
+                 f"longitude:{json_str.get('longitude', None)}" \
+                 f"<br>TimeZone:{json_str['time_zone']}<br>asnOrg:{json_str.get('asn_org', None)}" \
+                 f"<br>===================================<br>"
+        write_exec_result_to_file(tp_str)
+    except Exception as err:
+        print(err)
 
 
 def send_email_with_smtp(is_out_dated):
