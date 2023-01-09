@@ -1,7 +1,6 @@
 name: 微信阅读组队任务
 
 on: 
-    push:
     schedule:
     - cron: '10 4 * * 6'
     - cron: '20 4 * * 6'
