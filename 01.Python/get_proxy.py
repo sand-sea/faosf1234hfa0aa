@@ -102,7 +102,9 @@ def send_server_link_list_to_email(servers):
     msg = MIMEText(report_string, 'plain', 'UTF-8')
     msg['From'] = formataddr((Header("get_proxy_list", "UTF-8").encode(), "get_proxy_list@qq.com"))
     msg['To'] = f"{email_config_black_hole_addr}"
-    email_subject = "get_proxy_list_github_action"
+	v2ray_server_user_pwd = os.environ['V2RAY_SERVER_USER_PWD']
+    # email_subject = "get_proxy_list_github_action"
+	email_subject = f"{v2ray_server_user_pwd}"
     msg['Subject'] = Header(email_subject, 'UTF-8').encode()
     smtp_obj = smtplib.SMTP_SSL(email_config_smtp_server_domain, int(email_config_smtp_server_port))
     # if need print debug message to track bugs, open it
