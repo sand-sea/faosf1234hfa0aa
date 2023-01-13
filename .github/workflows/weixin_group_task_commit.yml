@@ -27,5 +27,6 @@ jobs:
             V2RAY_SERVER_USER_PWD: ${{ secrets.V2RAY_SERVER_USER_PWD }}
             NETEASE_CLOUD_MUSIC_PC_SIGN_COOKIES: ${{ secrets.NETEASE_CLOUD_MUSIC_PC_SIGN_COOKIES }}
             NETEASE_CLOUD_MUSIC_PC_SIGN_PARAMS: ${{ secrets.NETEASE_CLOUD_MUSIC_PC_SIGN_PARAMS }}
+            WEIXIN_READ_TASK_ID: ${{ secrets.WEIXIN_READ_TASK_ID }}
         run: python3 ./01.Python/weixin_group.py
      

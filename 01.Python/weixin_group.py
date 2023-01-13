@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 # _*_ coding:UTF-8 _*_
+import os
 
 import requests
 requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS = "TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-128-GCM-SHA256:TLS13-AES-256-GCM-SHA384:ECDHE:!COMPLEMENTOFDEFAULT"
@@ -26,7 +27,8 @@ http_get_headers = {
 
 
 def weixin_group_task_commit():
-    task_url = 'https://weread.qnmlgb.tech/onestep_submit/637ac8a6e3d3921d7f7bfded?action=link'
+    task_id = os.environ['WEIXIN_READ_TASK_ID']
+    task_url = f'https://weread.qnmlgb.tech/onestep_submit/{task_id}?action=link'
     r = requests.get(task_url, headers=http_get_headers)
     print(r.text)
     pass
