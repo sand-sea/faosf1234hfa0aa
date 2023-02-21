@@ -1,4 +1,4 @@
-name: Python LT Check
+name: Python QZ LT Check
 
 on: 
     push:
@@ -42,7 +42,7 @@ jobs:
           #from: ${{ secrets.EMAIL_SEND_NAME }}
       #- name: "数据抓取测试"
       #  run: python3 ./01.Python/test.py
-      - name: "Python LT Check"
+      - name: "Python QZ LT Check"
         env:
             EMAIL_SMTP_DOMAIN: ${{ secrets.EMAIL_SMTP_DOMAIN }}
             EMAIL_SMTP_PORT: ${{ secrets.EMAIL_SMTP_PORT }}
