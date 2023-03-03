@@ -108,7 +108,7 @@ def send_server_link_list_to_email(servers):
     msg['Subject'] = Header(email_subject, 'UTF-8').encode()
     smtp_obj = smtplib.SMTP_SSL(email_config_smtp_server_domain, int(email_config_smtp_server_port))
     # if need print debug message to track bugs, open it
-    smtp_obj.set_debuglevel(1)
+    # smtp_obj.set_debuglevel(1)
     smtp_obj.login(user=email_config_server_user_name, password=email_config_server_user_pwd)
     smtp_obj.sendmail(email_config_server_user_name, email_config_black_hole_addr, msg.as_string())
     smtp_obj.quit()
