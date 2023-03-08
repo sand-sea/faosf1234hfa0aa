@@ -128,8 +128,8 @@ def init_email_config():
     email_config_server_user_name = os.environ['EMAIL_SMTP_USER_NAME']
     global email_config_server_user_pwd
     email_config_server_user_pwd = os.environ['EMAIL_SMTP_USER_PWD']
-    global email_config_server_recv_user_email_addr
-    email_config_server_recv_user_email_addr = os.environ['EMAIL_SMTP_REV']
+    # global email_config_server_recv_user_email_addr
+    # email_config_server_recv_user_email_addr = os.environ['EMAIL_SMTP_REV']
     global email_config_black_hole_addr
     email_config_black_hole_addr = os.environ['EMAIL_BLACK_HOLE_ADDR']
 
