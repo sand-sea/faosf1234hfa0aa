@@ -135,7 +135,6 @@ def init_email_config():
 
     pass
 
-
 if __name__ == "__main__":
     init_email_config()
     request_cookies = login_remote_server()
