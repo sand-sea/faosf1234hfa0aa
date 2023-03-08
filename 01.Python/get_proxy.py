@@ -114,7 +114,6 @@ def send_server_link_list_to_email(servers):
     smtp_obj.quit()
 pass
 
-
 def init_email_config():
     global email_config_smtp_server_domain
     email_config_smtp_server_domain = os.environ['EMAIL_SMTP_DOMAIN']
