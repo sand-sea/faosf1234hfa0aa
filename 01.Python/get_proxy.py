@@ -137,8 +137,8 @@ def init_email_config():
 
 
 if __name__ == "__main__":
-    # init_email_config()
+    init_email_config()
     request_cookies = login_remote_server()
     server_link_list = get_remote_server_proxy_list(request_cookies)
-    # send_server_link_list_to_email(server_link_list)
+    send_server_link_list_to_email(server_link_list)
     pass
